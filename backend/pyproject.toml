@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shared-account-identity-rp"
+version = "0.1.0"
+description = "React account portal and reusable Keycloak relying-party BFF"
+requires-python = ">=3.11"
+dependencies = [
+  "authlib>=1.9.1,<2",
+  "fastapi>=0.159.1,<1",
+  "uvicorn>=0.54,<1",
+  "python-dotenv>=1.2.4,<2",
+  "httpx2>=2.16,<3",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=9.1.1,<10"]
+membership = []
+
+[tool.setuptools.packages.find]
+where = ["src"]

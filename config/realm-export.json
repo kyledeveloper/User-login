@@ -1,0 +1,48 @@
+{
+  "realm": "shared",
+  "enabled": true,
+  "displayName": "Shared Identity (Local Development)",
+  "registrationAllowed": true,
+  "verifyEmail": true,
+  "resetPasswordAllowed": true,
+  "rememberMe": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "bruteForceProtected": true,
+  "accessTokenLifespan": 300,
+  "revokeRefreshToken": true,
+  "refreshTokenMaxReuse": 0,
+  "ssoSessionIdleTimeout": 604800,
+  "ssoSessionMaxLifespan": 2592000,
+  "smtpServer": {
+    "host": "mailpit",
+    "port": "1025",
+    "from": "no-reply@localhost",
+    "fromDisplayName": "Local Shared Identity",
+    "auth": "false",
+    "ssl": "false",
+    "starttls": "false"
+  },
+  "clients": [
+    {
+      "clientId": "account-portal",
+      "name": "Shared account portal (local only)",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "clientAuthenticatorType": "client-secret",
+      "defaultClientScopes": ["web-origins", "profile", "email", "roles"],
+      "redirectUris": ["http://localhost:8000/auth/callback"],
+      "webOrigins": [],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:5173/",
+        "backchannel.logout.url": "http://localhost:8000/auth/backchannel-logout",
+        "backchannel.logout.session.required": "true"
+      }
+    }
+  ]
+}
